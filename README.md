@@ -36,6 +36,7 @@
   ```
 
 1. AWS CLI の実行結果を環境変数に入れる場合などは、`--output text` の場合が役立ちます。
+   - 下記は Linux の bash での実行例です。
   ```
   INSTANCE_TYPE=$(aws ec2 describe-instances  --instance-id i-xxx --query "Reservations[*].Instances[*].InstanceType" --output text)
   echo ${INSTANCE_TYPE}
