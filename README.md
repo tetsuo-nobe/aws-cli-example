@@ -20,17 +20,17 @@
 3. AWS CLI の `query` オプションを使用して Amazon EC2 インスタンスの情報の一部だけを表示します。 
    - 次の例ではインスタンス ID だけを表示しています。
   ```
-  aws ec2 describe-instances  --query 'Reservations[*].Instances[*].InstanceId' 
+  aws ec2 describe-instances  --query "Reservations[*].Instances[*].[InstanceId]" 
   ```
 
 4. AWS CLI の `query` オプションを使用して Amazon EC2 インスタンスの情報の一部だけを表示します。 
    - 次の例ではインスタンス ID と インスタンスタイプを表示しています。
   ```
-  aws ec2 describe-instances  --query 'Reservations[*].Instances[*].[InstanceId,InstanceType]' 
+  aws ec2 describe-instances  --query "Reservations[*].Instances[*].[InstanceId,InstanceType]" 
   ```
 
-5. AWS CLI の `output` オプションを使用して Amazon EC2 インスタンスの情報の表示形式を指定します。 
+5. AWS CLI の `instance-id` オプションと `output` オプションを使用して 特定の Amazon EC2 インスタンスのインスタンスタイプの表示形式を指定しています。 
    - 次の例では出力形式をテキストに指定しています。他にも `yaml` や `table` を試してみましょう。
   ```
-  aws ec2 describe-instances  --query 'Reservations[*].Instances[*].InstanceId' --output text
+  aws ec2 describe-instances  --instance-id i-xxx --query "Reservations[*].Instances[*].InstanceType" --output text
   ```
