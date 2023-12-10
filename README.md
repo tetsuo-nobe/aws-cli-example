@@ -5,10 +5,13 @@
   ```
   aws --version
   ```
-   - 次のように AWS CLI のバージョンが表示されます。(バージョン番号が異なっても問題ありません。） 
+
+1. AWS CLI を使用して Amazon EC2 インスタンスの情報を表示する権限をもっているか確認します。
+
   ```
-  aws-cli/2.12.3 Python/3.11.4 Linux/4.14.314-238.539.amzn2.x86_64 exe/x86_64.amzn.2 prompt/off
+  aws ec2 --dry-run describe-instances 
   ```
+
 1. AWS CLI を使用して Amazon EC2 インスタンスの情報を表示します。 
 
   ```
@@ -36,7 +39,7 @@
   ```
 
 1. AWS CLI の実行結果を環境変数に入れる場合などは、`--output text` の場合が役立ちます。
-   - 下記は Linux の bash での実行例です。
+   - 下記は Linux の bash での実行例です。**i-xxx** の部分は実際のインスタンス ID に置換えて下さい。
   ```
   INSTANCE_TYPE=$(aws ec2 describe-instances  --instance-id i-xxx --query "Reservations[*].Instances[*].InstanceType" --output text)
   echo ${INSTANCE_TYPE}
